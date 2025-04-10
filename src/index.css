@@ -1,0 +1,198 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 225 20% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 262 83% 74%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 20 90% 50%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 262 83% 74%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 225 30% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 262 83% 74%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 262 83% 74%;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 262 83% 74%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 20 90% 50%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 262.1 83.3% 57.8%;
+
+    --sidebar-background: 225 30% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 262 83% 74%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 262 83% 74%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground transition-colors duration-150;
+  }
+  
+  /* Improve responsiveness */
+  .responsive-container {
+    @apply w-full px-4 sm:px-6 md:px-8 max-w-7xl mx-auto;
+  }
+  
+  /* Tablet-specific styles */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .tablet-optimized {
+      @apply flex-col md:flex-row;
+    }
+  }
+}
+
+/* Theme transition helpers */
+.theme-transition {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.price-up {
+  @apply text-green-500 dark:text-green-400;
+}
+
+.price-down {
+  @apply text-red-500 dark:text-red-400;
+}
+
+.crypto-card {
+  @apply bg-card rounded-lg shadow-md p-4 transition-all duration-300 hover:shadow-lg border border-border;
+}
+
+.crypto-card-title {
+  @apply text-lg font-medium flex items-center space-x-2;
+}
+
+.crypto-table-wrapper {
+  @apply w-full overflow-x-auto rounded-lg border border-border;
+}
+
+.crypto-table {
+  @apply w-full min-w-full text-sm;
+}
+
+.crypto-table th {
+  @apply bg-muted px-4 py-3 text-left font-medium text-muted-foreground;
+}
+
+.crypto-table td {
+  @apply px-4 py-3 border-t border-border;
+}
+
+.chart-container {
+  @apply h-[300px] w-full rounded-lg p-4 bg-card border border-border;
+}
+
+/* Better loading animations */
+@keyframes pulse-bg {
+  0%, 100% {
+    background-color: rgba(155, 135, 245, 0.1);
+  }
+  50% {
+    background-color: rgba(155, 135, 245, 0.2);
+  }
+}
+
+.loading-pulse {
+  animation: pulse-bg 1.5s infinite ease-in-out;
+}
+
+/* Image lazy loading styles */
+.lazy-image {
+  @apply opacity-0 transition-opacity duration-300;
+}
+
+.lazy-image.loaded {
+  @apply opacity-100;
+}
+
+/* Add responsive tablet styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-grid {
+    @apply grid-cols-2;
+  }
+  
+  .tablet-flex {
+    @apply flex-wrap;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 767px) {
+  .mobile-stack {
+    @apply flex-col;
+  }
+  
+  .mobile-compact {
+    @apply p-2 text-sm;
+  }
+  
+  .mobile-hidden {
+    @apply hidden;
+  }
+}
